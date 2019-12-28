@@ -10,7 +10,10 @@ export const DatabaseProviderKey: string = "DATABASE_PROVIDER_SEQUELIZE";
 export const DatabaseProvider: Provider = {
   provide: DatabaseProviderKey,
   useFactory: async () => {
-    const sequelize = new Sequelize(DatabaseConfig);
+    const sequelize = new Sequelize(
+      // @ts-ignore
+      process.env.NODE_ENV === "production" ? process.env.JAWSDB_URL : DatabaseConfig,
+    );
     sequelize.addModels([Pornstar]);
     return sequelize;
   },
