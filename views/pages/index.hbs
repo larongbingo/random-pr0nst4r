@@ -1,7 +1,29 @@
 <div class="container" style="min-height: 100vh; position: relative;">
   <h1>Random Pornstar</h1>
   <p>Based Pornhub actors/actresses</p>
+  <form action="/">
+    <select name="gender" id="gender" selected="{{ pornstar.gender }}">
+      <option value="m2f">M2F</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      <option>Couple</option>
+      <option value="f2m">F2M</option>
+      <option>Other</option>
+      <option value="unknown">Unknown</option>
+      <option>Same Sex Couple (Male)</option>
+      <option>Same Sex Couple (Female)</option>
+    </select>
+    <button id="submit" type="submit">Random</button>
+  </form>
   <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <h1>{{ pornstar }}</h1>
+    <h1>{{ pornstar.name }}</h1>
   </div>
 </div>
+<script>
+  let selectGenderField = document.getElementById("gender");
+  let options = selectGenderField.options;
+  for(let i = 0; i < options.length; i++) {
+    if(options[i].value === "{{ pornstar.gender }}")
+      selectGenderField.selectedIndex = i;
+  }
+</script>
