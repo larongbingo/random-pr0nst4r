@@ -19,5 +19,5 @@ CREATE TABLE Pornstars(
 students.stars.forEach(pornStar => {
   pornStar.star.star_name = pornStar.star.star_name.replace(/"/g, '\\"');
   pornStar.star.star_name = pornStar.star.star_name.replace(/'/g, "\\'");
-  console.log(`INSERT INTO Pornstars(name, thumbnail, url, gender, video_count) VALUES ("${pornStar.star.star_name}", "${pornStar.star.star_thumb}", "${pornStar.star.star_url}", "${pornStar.star.gender}", ${pornStar.star.videos_count_all});`);
+  console.log(`INSERT INTO Pornstars(name, thumbnail, url, gender, videoCount) VALUES ("${pornStar.star.star_name}", "${pornStar.star.star_thumb}", "${pornStar.star.star_url}", "${pornStar.star.gender}", ${pornStar.star.videos_count_all});`);
 });
