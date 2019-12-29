@@ -6,5 +6,5 @@ export const DatabaseConfig: Options = {
   port: 3306,
   username: "root",
   password: "root",
-  database: "pronstar",
+  database: "randompornstarsv2",
 };

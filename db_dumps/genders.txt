@@ -1,0 +1,9 @@
+m2f
+female
+male
+Couple
+f2m
+Other
+unknown
+Same Sex Couple (Male)
+Same Sex Couple (Female)

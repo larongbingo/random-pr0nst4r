@@ -1,26 +1,21 @@
 import { Injectable, Inject, Logger } from "@nestjs/common";
+import { Op } from "sequelize";
 
 import { PornstarProviderKey } from "./pornstar.model";
 import { Pornstar } from "./pornstar.model";
+import { IPornstar } from "./interfaces/IPornstar";
 
 @Injectable()
 export class PornstarService {
 
-  private pornstarCount = 1;
-
   constructor(
     @Inject(PornstarProviderKey) private readonly pronstarRepository: typeof Pornstar,
-  ) {
-    this.getPornstarCount();
-  }
+  ) {}
 
-  private async getPornstarCount() {
-    this.pornstarCount = await this.pronstarRepository.count();
-  }
-
-  public async getRandomPronstarName(): Promise<Pornstar> {
-    const randomId = Math.floor(Math.random() * this.pornstarCount) + 1;
-    const pornstar = this.pronstarRepository.findOne({where: {id: randomId}});
-    return pornstar;
+  public async getRandomPronstarName(filters?: Partial<IPornstar>): Promise<Pornstar> {
+    Object.keys(filters).forEach(key => typeof filters[key] === "undefined" ? delete filters[key] : "");
+    const pornstars = await this.pronstarRepository.findAndCountAll({where: filters});
+    const randomId = Math.floor(Math.random() * pornstars.count);
+    return pornstars.rows[randomId];
   }
 }
