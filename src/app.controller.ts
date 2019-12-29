@@ -1,6 +1,8 @@
-import { Controller, Get, Render, Query } from "@nestjs/common";
+import { Controller, Get, Render, Query, UsePipes } from "@nestjs/common";
 
 import { PornstarService } from "./pornstar/pornstar.service";
+import { ValidGenderPipe } from "./pornstar/pipes/valid.gender.pipe";
+import { Gender } from "./pornstar/constants/valid.genders";
 
 @Controller()
 export class AppController {
@@ -10,7 +12,8 @@ export class AppController {
 
   @Get()
   @Render("pages/index")
-  public async getHello(@Query("gender") gender: string) {
+  @UsePipes(ValidGenderPipe)
+  public async getHello(@Query("gender") gender: Gender) {
     return {
       title: "Random Pornstar",
       pornstar: await this.pornstarService.getRandomPronstarName({gender}),
