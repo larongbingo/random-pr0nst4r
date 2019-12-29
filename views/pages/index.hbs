@@ -26,10 +26,10 @@
 <script>
   let selectGenderField = document.getElementById("gender");
   let options = selectGenderField.options;
-  if("{{ pornstar.gender }}" !== "All") {
-    for(let i = 0; i < options.length; i++) {
-      if(options[i].value === "{{ pornstar.gender }}")
-        selectGenderField.selectedIndex = i;
+  let searchParams = new URLSearchParams(window.location.search);
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].value === searchParams.get("gender")) {
+      selectGenderField.selectedIndex = i;
     }
   }
 </script>
