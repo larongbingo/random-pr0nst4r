@@ -3,6 +3,7 @@
   <p>Based on Pornhub actors/actresses</p>
   <form action="/">
     <select name="gender" id="gender">
+      <option selected>All</option>
       <option value="m2f">M2F</option>
       <option value="female">Female</option>
       <option value="male">Male</option>
@@ -15,15 +16,20 @@
     </select>
     <button id="submit" type="submit">Random</button>
   </form>
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <h1>{{ pornstar.name }}</h1>
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+    <img class="img-fluid img-thumbnail" src="{{ pornstar.thumbnail }}">
+    <h2>{{ pornstar.name }}</h2>
+    <p>{{ pornstar.gender }}</p>
+    <a href="{{ pornstar.url }}">Pornhub Profile Page</a>
   </div>
 </div>
 <script>
   let selectGenderField = document.getElementById("gender");
   let options = selectGenderField.options;
-  for(let i = 0; i < options.length; i++) {
-    if(options[i].value === "{{ pornstar.gender }}")
-      selectGenderField.selectedIndex = i;
+  if("{{ pornstar.gender }}" !== "All") {
+    for(let i = 0; i < options.length; i++) {
+      if(options[i].value === "{{ pornstar.gender }}")
+        selectGenderField.selectedIndex = i;
+    }
   }
 </script>
