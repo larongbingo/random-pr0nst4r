@@ -9,7 +9,24 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "random/pornhub": [
+        "libs/pornhub/src"
+      ],
+      "random/pornhub/*": [
+        "libs/pornhub/src/*"
+      ],
+      "random/interfaces": [
+        "libs/interfaces/src"
+      ],
+      "random/interfaces/*": [
+        "libs/interfaces/src/*"
+      ]
+    }
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
