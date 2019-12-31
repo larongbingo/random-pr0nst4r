@@ -1,9 +1,9 @@
 import { Injectable, Inject, Logger } from "@nestjs/common";
 import { Op } from "sequelize";
+import { IPornstar } from "random/interfaces";
 
 import { PornstarProviderKey } from "./pornstar.model";
 import { Pornstar } from "./pornstar.model";
-import { IPornstar } from "./interfaces/IPornstar";
 
 @Injectable()
 export class PornstarService {
