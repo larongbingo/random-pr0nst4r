@@ -1,8 +1,9 @@
+
 import { Provider } from "@nestjs/common";
 import { Model, Column, DataType, Table, PrimaryKey, AutoIncrement } from "sequelize-typescript";
+import { IPornstar } from "random/interfaces";
 
-import { IPornstar } from "./interfaces/IPornstar";
-
+// tslint:disable:variable-name
 @Table
 export class Pornstar extends Model<Pornstar> implements IPornstar {
 
@@ -12,19 +13,19 @@ export class Pornstar extends Model<Pornstar> implements IPornstar {
   public id: number;
 
   @Column(DataType.TEXT())
-  public name: string;
+  public star_name: string;
 
   @Column(DataType.TEXT({length: "long"}))
-  public thumbnail: string;
+  public star_thumb: string;
 
   @Column(DataType.TEXT({length: "long"}))
-  public url: string;
+  public star_url: string;
 
   @Column(DataType.TEXT())
   public gender: string;
 
   @Column(DataType.INTEGER)
-  public videoCount: string;
+  public videos_count_all: string;
 
 }
 
