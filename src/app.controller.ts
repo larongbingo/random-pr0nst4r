@@ -25,7 +25,6 @@ export class AppController {
       ordering: "mostviewed",
       period: "alltime",
     });
-    Logger.log(pornList[0]);
     return {
       title: "Random Pornstar",
       pornstar,
