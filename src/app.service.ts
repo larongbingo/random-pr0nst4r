@@ -11,7 +11,7 @@ export class AppService {
     private readonly pornhubService: PornhubService,
   ) {}
 
-  @Cron("* * * 1")
+  @Cron("* * * 1 * *")
   private async fetchPornstars() {
     const pornstars = await this.pornhubService.getDetailedStars();
     const promises = pornstars.map(async pornstar => await this.pornstarRepo.create(pornstar));
