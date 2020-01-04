@@ -1,7 +1,6 @@
 import { Module } from "@nestjs/common";
 
 import { PornstarProvider } from "./pornstar.model";
-import { PornstarController } from "./pornstar.controller";
 import { PornstarService } from "./pornstar.service";
 import { ValidGendersProvider } from "./constants/valid.genders";
 
@@ -10,9 +9,6 @@ import { ValidGendersProvider } from "./constants/valid.genders";
     PornstarProvider,
     PornstarService,
     ValidGendersProvider,
-  ],
-  controllers: [
-    PornstarController,
   ],
   exports: [
     PornstarProvider,

@@ -15,18 +15,33 @@ export class AppController {
   @Get()
   @Render("pages/index")
   @UsePipes(ValidGenderPipe)
-  public async getHello(@Query("gender") gender: Gender) {
+  public async indexPage(@Query("gender") gender: Gender) {
+    const details = await this.getPornstarAndMostViewedPorn(gender);
+    return {
+      title: "Random Pornstar",
+      ...details,
+    };
+  }
+
+  @Get("/pornstar")
+  @UsePipes(ValidGenderPipe)
+  public async getRandomPronstar(@Query("gender") gender: Gender) {
+    return await this.getPornstarAndMostViewedPorn(gender);
+  }
+
+  private async getPornstarAndMostViewedPorn(gender: Gender) {
     const pornstar = await this.pornstarService.getRandomPronstarName({
       gender,
     });
+
     const pornList = await this.pornhubService.searchVideos({
       thumbsize: "small",
       phrase: [pornstar.star_name],
       ordering: "mostviewed",
       period: "alltime",
     });
+
     return {
-      title: "Random Pornstar",
       pornstar,
       porn: pornList[0],
     };
