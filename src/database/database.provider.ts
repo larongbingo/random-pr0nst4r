@@ -12,6 +12,7 @@ export const DatabaseProvider: Provider = {
   useFactory: async () => {
     const sequelize = new Sequelize(DatabaseConfig);
     sequelize.addModels([Pornstar]);
+    await sequelize.authenticate();
     return sequelize;
   },
 };
