@@ -28,7 +28,7 @@ export class AppController {
     return {
       title: "Random Pornstar",
       pornstar,
-      porn: pornList[0],
+      porn: pornList[0] ? pornList[0] : null,
     };
   }
 }

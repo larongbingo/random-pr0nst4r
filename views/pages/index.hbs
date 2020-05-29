@@ -21,7 +21,9 @@
     <h2>{{ pornstar.star_name }}</h2>
     <p>{{ pornstar.gender }}</p>
     <a href="{{ pornstar.star_url }}">Pornhub Profile Page</a> <br>
+    {{#if porn}}
     <a href="{{ porn.url }}">Most Viewed Porn: {{porn.title}}</a>
+    {{/if}}
   </div>
 </div>
 <script>
