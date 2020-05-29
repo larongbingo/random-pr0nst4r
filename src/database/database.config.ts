@@ -1,5 +1,7 @@
 import { Options } from "sequelize/types";
 
 export const DatabaseConfig: Options = {
-  dialect: "sqlite",
+  dialect: "mysql",
+  username: "root",
+  password: "root"
 };
