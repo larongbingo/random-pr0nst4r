@@ -25,10 +25,11 @@ export class AppController {
       ordering: "mostviewed",
       period: "alltime",
     });
+    Logger.debug(pornList);
     return {
       title: "Random Pornstar",
       pornstar,
-      porn: pornList[0] ? pornList[0] : null,
+      porn: pornList ? pornList[0] : null,
     };
   }
 }
