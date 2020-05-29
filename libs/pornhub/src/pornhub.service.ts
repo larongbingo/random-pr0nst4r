@@ -14,10 +14,15 @@ export class PornhubService {
   }
 
   public async searchVideos(options: ISearchOptions) {
-    const response = await axios.get<{ videos: IVideo[] }>(
-      "https://www.pornhub.com/webmasters/search",
-      { params: options },
-    );
-    return response.data.videos;
+    try {
+      const response = await axios.get<{ videos: IVideo[] }>(
+        "https://www.pornhub.com/webmasters/search",
+        { params: options },
+      );
+      return response.data.videos;
+    }
+    catch(exception) {
+      return [];
+    }
   }
 }
