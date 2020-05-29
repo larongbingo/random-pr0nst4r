@@ -13,7 +13,7 @@ export class PornstarService {
   ) {}
 
   public async getRandomPronstarName(filters?: Partial<IPornstar>): Promise<Pornstar> {
-    Object.keys(filters).forEach(key => typeof filters[key] === "undefined" ? delete filters[key] : "");
+    Object.keys(filters ? filters : {}).forEach(key => typeof filters[key] === "undefined" ? delete filters[key] : "");
     const pornstars = await this.pronstarRepository.findAndCountAll({where: filters});
     const randomId = Math.floor(Math.random() * pornstars.count);
     return pornstars.rows[randomId];
